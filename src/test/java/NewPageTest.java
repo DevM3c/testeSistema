@@ -48,59 +48,27 @@ public class NewPageTest {
   public void openAjudaPage(){
     webdriver.get("https://www.youtube.com/");
     WebElement botao = webdriver.findElement(
-        By.xpath("//*[@id=\"icon\"]"));
+        By.xpath("//*[@id=\"guide-icon\"]"));
     botao.click();
     Assertions.assertTrue(botao.isEnabled());
-
-  }
-  @Test
-  public void openPageFalse(){
-    webdriver.get("");
-    WebElement vendidos = webdriver.findElement(By.xpath("//*[@id=\"nav-xshop\"]/a[3]"));
-    vendidos.click();
-    Assertions.assertFalse(vendidos.isEnabled(),"");
 
   }
 
   @Test
   public void openProduct(){
-    webdriver.get("https://www.youtube.com/");
-    WebElement botaoFB = webdriver.findElement(By.xpath("/html/body/ytd-app/div[1]/div/ytd-masthead/div[3]/div[1]/ytd-topbar-logo-renderer/a/ytd-yoodle-renderer/picture/img"));
+    webdriver.get("https://shop.samsung.com/br");
+    WebElement botaoFB = webdriver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div/div[1]/a/div/img"));
     botaoFB.click();
-    Assertions.assertEquals("https://www.youtube.com/?bp=wgUCEAE%3D",
+    Assertions.assertEquals("https://shop.samsung.com/br/lava-e-seca-wd13t-13kg-branca-1953/p?skuId=2738",
                 webdriver.getCurrentUrl());
   }
 
   @Test
-  public void selectCadastroTest(){
-    webdriver.get("https://vihhllopes.github.io/StudioMW-vihhllopes-willinny-s/cadastro.html");
-    WebElement botaoSelect = webdriver.findElement(By.xpath("/html/body/div/fieldset/form/div[4]/select"));
-    Select select = new Select(botaoSelect);
-    select.selectByIndex(0);
-    Assertions.assertTrue(botaoSelect.isEnabled());
-
-  }
-
-
-  @Test
-  public void openPaginaCelular (){
-    webdriver.get("https://www.youtube.com");
-
-    WebElement search = webdriver.findElement(By.xpath("//*[@id=\"hover-overlays\"]"));
-
-    search.sendKeys("musica");
-    search.submit();
-
-
-
-  }
-
-  @Test
   public void moverBotao(){
-    webdriver.get("https://www.youtube.com");
+    webdriver.get("https://shop.samsung.com/br");
     Actions actions = new Actions(webdriver);
     WebElement botao = webdriver.findElement(
-        By.xpath("/html/body/ytd-app/div[1]/ytd-mini-guide-renderer/div/ytd-mini-guide-entry-renderer[4]/a/span"));
+        By.xpath("//*[@id=\"headerSamsung\"]/div[2]/div/div/a"));
     actions.moveToElement(botao).perform();
   }
 
@@ -108,12 +76,12 @@ public class NewPageTest {
 
   @Test
   public void tooltipTest(){
-    webdriver.get("https://www.youtube.com");
+    webdriver.get("https://shop.samsung.com/br");
     Actions actions = new Actions(webdriver);
 
-    WebElement livros = webdriver.findElement(By.xpath("/html/body/ytd-app/div[1]/ytd-mini-guide-renderer/div/ytd-mini-guide-entry-renderer[4]/a/span"));
-    actions.moveToElement(livros).perform();
-    Assertions.assertTrue(livros.isEnabled());
+    WebElement carrinho = webdriver.findElement(By.xpath("/html/body/div[2]/div/div[1]/div/div[2]/div[2]/div/div/div[2]/div/div[2]/ul[2]/li[3]/aside/div/div/button/div/span"));
+    actions.moveToElement(carrinho).perform();
+    Assertions.assertTrue(carrinho.isDisplayed());
   }
 
 
